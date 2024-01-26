@@ -3,4 +3,4 @@ const simpleProgram = (date, name, activity) => {
     return true;
 }
 
-simpleProgram(new Date, 'Екатерина', 'Eating');
+simpleProgram(new Date, 'Екатерина', 'Сoding');
