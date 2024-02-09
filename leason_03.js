@@ -139,7 +139,9 @@ function myOwnStack() {
 }
 
 const stack = new myOwnStack;
+stack.del(); // stack is empty
 stack.add('I');
+stack.showAll(); //  ['I']
 stack.add('am');
 stack.add('Kate');
 stack.add('!');
@@ -150,6 +152,7 @@ stack.showFirst(); // Kate
 stack.undo(2);
 stack.showAll(); //  ['I']
 stack.undo(2); // you can't undo 2 actions, all stack length is 1
+
 
 // 3.3 Queue (очередь): Реализуйте очередь с использованием массива;
 // FIFO;
@@ -164,8 +167,11 @@ const storQueue = {
     },
 
     del() {
-        this.queue.pop();
-        return this.queue;
+        if (this.queue.pop()) {
+            return this.queue;
+        }
+        console.log(`queue is empty`);
+        return false;
     },
 
     showAll() {
@@ -179,7 +185,7 @@ const storQueue = {
             console.log(firstEl);
             return firstEl;
         }
-        console.log('queu is empty');
+        console.log('queue is empty');
         return false;        
     },
 
@@ -192,11 +198,12 @@ const storQueue = {
 }
 
 storQueue.isEmpty(); // true
+storQueue.del(); // stack is empty
 storQueue.add('Alex');
 storQueue.add('Luda');
 storQueue.add('Luk');
 storQueue.showAll(); // ['Luk', 'Luda', 'Alex']
-storQueue.del();
+console.log(storQueue.del()); // ['Luk', 'Luda']
 storQueue.showFirst(); // Luda
 storQueue.isEmpty(); // false
 
